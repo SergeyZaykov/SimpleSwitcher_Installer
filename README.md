@@ -11,3 +11,6 @@ NSIS Installer for the SimpleSwitcher (https://github.com/alexzh2/SimpleSwitcher
 Особенности:
  Требуются права администратора.
  Устанавливает SimpleSwitcher для всех пользователей.
+
+Проверка на вирусы:
+https://www.virustotal.com/#/file/276f512f3c1786e4aaf58136b724c8fcb13d1c2c7b3268f87c737303e9e06141/detection
