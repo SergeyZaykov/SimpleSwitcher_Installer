@@ -1,4 +1,4 @@
-NSIS Installer for the SimpleSwitcher (https://github.com/alexzh2/SimpleSwitcher)
+NSIS Installer for the SimpleSwitcher (https://github.com/alexzh2/SimpleSwitcher, https://vk.com/simpleswitcher)
 
 Цель написания инсталлятора: 
  Устанавливать SimpleSwitcher в корпоративной среде.
