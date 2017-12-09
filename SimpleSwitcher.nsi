@@ -5,7 +5,6 @@
 ; prompts the user asking them where to install, and drops a copy of example1.nsi
 ; there. 
 
-!include "MUI2.nsh"
 ;--------------------------------
 
 ; The name of the installer
@@ -14,7 +13,6 @@ Name "SimpleSwitcher"
 ; The file to write
 OutFile "SimpleSwitcher setup.exe"
 
-LoadLanguageFile "${NSISDIR}\Contrib\Language files\English.nlf"
 
 ; The default installation directory
 InstallDir $PROGRAMFILES\SimpleSwitcher
@@ -23,6 +21,9 @@ InstallDir $PROGRAMFILES\SimpleSwitcher
 RequestExecutionLevel Admin
 
 ;--------------------------------
+
+LoadLanguageFile "${NSISDIR}\Contrib\Language files\English.nlf"
+
 
 ; для показа в списке установленных программ
 !define Uninstall_key "Software\Microsoft\Windows\CurrentVersion\Uninstall\SimpleSwitcher"
@@ -34,10 +35,11 @@ RequestExecutionLevel Admin
 !define The_program "$SMPROGRAMS\SimpleSwitcher"
 ; Имя файла установленной программы
 !define Exe_file "$INSTDIR\SimpleSwitcher.exe"
-; Лицензия
-!insertmacro MUI_PAGE_LICENSE "License.txt"
-!insertmacro MUI_PAGE_COMPONENTS
-!insertmacro MUI_LANGUAGE "Russian"
+;--------------------------------
+
+LicenseText "GNU General Public License version 3"
+LicenseData "License.txt"
+
 ;--------------------------------
 ;Version Information
 
@@ -61,6 +63,7 @@ Page instfiles
 
 UninstPage uninstConfirm
 UninstPage instfiles
+
 
 
 ;--------------------------------
