@@ -5,13 +5,14 @@
 ; prompts the user asking them where to install, and drops a copy of example1.nsi
 ; there. 
 
+!include "MUI2.nsh"
 ;--------------------------------
 
 ; The name of the installer
 Name "SimpleSwitcher"
 
 ; The file to write
-OutFile "SimpleSwitcher.exe"
+OutFile "SimpleSwitcher setup.exe"
 
 LoadLanguageFile "${NSISDIR}\Contrib\Language files\English.nlf"
 
@@ -33,7 +34,10 @@ RequestExecutionLevel Admin
 !define The_program "$SMPROGRAMS\SimpleSwitcher"
 ; Имя файла установленной программы
 !define Exe_file "$INSTDIR\SimpleSwitcher.exe"
-
+; Лицензия
+!insertmacro MUI_PAGE_LICENSE "License.txt"
+!insertmacro MUI_PAGE_COMPONENTS
+!insertmacro MUI_LANGUAGE "Russian"
 ;--------------------------------
 ;Version Information
 
@@ -50,12 +54,14 @@ RequestExecutionLevel Admin
 
 ; Pages
 
+Page license
 Page components
 Page directory
 Page instfiles
 
 UninstPage uninstConfirm
 UninstPage instfiles
+
 
 ;--------------------------------
 
@@ -105,7 +111,7 @@ Section "Start Menu Shortcuts"
 
   CreateDirectory "${The_program}"
   CreateShortcut "${The_program}\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "$INSTDIR\uninstall.exe" 0
-  CreateShortcut "${The_program}\SimpleSwitcher.lnk" "${Exe_file}" "" "${Exe_file}" 0
+  CreateShortcut "${The_program}\SimpleSwitcher.lnk" "${Exe_file}" "" "${Exe_file}" 0 
   
 SectionEnd
 
@@ -116,8 +122,8 @@ Section "AutoRun (for all users)"
 
   ; Автозагрузка для всех пользователей
   SetShellVarContext all
-
-  CreateShortcut "$SMSTARTUP\SimpleSwitcher.lnk" "${Exe_file}" "" "${Exe_file}" 0
+  ; Создаю ярлык для автозапуска
+  CreateShortcut "$SMSTARTUP\SimpleSwitcher.lnk" "${Exe_file}" "/autostart" "${Exe_file}" 0
   
 SectionEnd
 
